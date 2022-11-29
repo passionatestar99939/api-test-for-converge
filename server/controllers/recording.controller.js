@@ -12,6 +12,32 @@ const { Recording, Sensor } = db;
  * @returns {status}
  */
 async function create(req, res, next) {
+  const sensor = await Sensor.findOne({ where: { id: req.body.sensorId } });
+
+  if (!sensor) {
+    const message = "Unregistered sensor!";
+    console.log(`Warning: ${message}`);
+    return res.json({ message });
+  } 
+  // checking duplicate data
+  const duplicationResult = await Recording.findOne({
+    where: { sensor_id: req.body.sensorId, time: req.body.time },
+  });
+  if (duplicationResult) {
+    console.log("error 409");
+    return res.json({ status: "error 409" });
+  }
+  const recording = Recording.build({
+    sensor_id: req.body.sensorId,
+    time: req.body.time,
+    value: req.body.value,
+  });
+
+  recording
+    .save()
+    // .then((savedRecording) => res.json(savedRecording))
+    .then(() => res.json({ status: 204 }))
+    .catch((e) => next(e));
 }
 
 /**
