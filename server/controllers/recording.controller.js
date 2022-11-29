@@ -18,7 +18,7 @@ async function create(req, res, next) {
     const message = "Unregistered sensor!";
     console.log(`Warning: ${message}`);
     return res.json({ message });
-  } 
+  }
   // checking duplicate data
   const duplicationResult = await Recording.findOne({
     where: { sensor_id: req.body.sensorId, time: req.body.time },
@@ -48,6 +48,15 @@ async function create(req, res, next) {
  * @returns {Recording[]}
  */
 function list(req, res, next) {
+  const { sensorId, since, until } = req.query;
+  Recording.findAll({
+    where: {
+      sensor_id: sensorId,
+      time: { [Sequelize.Op.between]: [since, until] },
+    },
+  })
+    .then((recordings) => res.json(recordings))
+    .catch((e) => next(e));
 }
 
 export default {
