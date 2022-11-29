@@ -18,6 +18,12 @@ async function create(req, res, next) {
     const message = "Unregistered sensor!";
     console.log(`Warning: ${message}`);
     return res.json({ message });
+  } else {
+    if (req.body.value > sensor.dataValues.threshold) {
+      const message = "Threshold is tripped!";
+      console.log(`Warning: ${message}`);
+      return res.json({ message });
+    }
   }
   // checking duplicate data
   const duplicationResult = await Recording.findOne({
