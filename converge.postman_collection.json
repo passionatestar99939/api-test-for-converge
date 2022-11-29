@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "c328c12e-17f7-44ee-894c-fc1a5661dc35",
+		"name": "converge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sensors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root}}/api/v1.0/sensors",
+					"host": [
+						"{{root}}"
+					],
+					"path": [
+						"api",
+						"v1.0",
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creating sensor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "9",
+							"type": "default"
+						},
+						{
+							"key": "threshold",
+							"value": "39",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{root}}/api/v1.0/sensors",
+					"host": [
+						"{{root}}"
+					],
+					"path": [
+						"api",
+						"v1.0",
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updating sensor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "9",
+							"type": "default"
+						},
+						{
+							"key": "threshold",
+							"value": "39",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{root}}/api/v1.0/sensors/9",
+					"host": [
+						"{{root}}"
+					],
+					"path": [
+						"api",
+						"v1.0",
+						"sensors",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "9",
+							"type": "default"
+						},
+						{
+							"key": "threshold",
+							"value": "39",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{root}}/api/v1.0/data",
+					"host": [
+						"{{root}}"
+					],
+					"path": [
+						"api",
+						"v1.0",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creating data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "9",
+							"type": "default"
+						},
+						{
+							"key": "value",
+							"value": "39",
+							"type": "default"
+						},
+						{
+							"key": "time",
+							"value": "3",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{root}}/api/v1.0/data",
+					"host": [
+						"{{root}}"
+					],
+					"path": [
+						"api",
+						"v1.0",
+						"data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
